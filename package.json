@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "nodemon": "^2.0.20",
+    "telefone": "^1.2.3",
+    "telefone-mask-ng2": "^1.0.7"
+  }
+}
