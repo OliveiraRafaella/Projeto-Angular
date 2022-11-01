@@ -15,7 +15,7 @@ var contatos = [
   { nome: "Mariana", telefone: "9999-9999", data: new Date(), operadora: { nome: "Tim", codigo: 41, categoria: "Celular" } }
 ];
 
-// app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public'));
 // app.use(express.bodyParser());
 
 var operadoras = [
@@ -49,7 +49,7 @@ app.post('/del_contatos', function (req, res) {
   
   for (i=0;i<contatos.length;i++){
     if((contatos[i]) == req.body){
-      delete (contatos[i]); 
+      destroy(contatos[i]); 
     }
   }
   res.send(req.body);
