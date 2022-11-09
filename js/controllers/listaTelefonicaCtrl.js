@@ -9,9 +9,9 @@ angular.module("listaTelefonica", []).controller("listaTelefonicaCtrl", function
 
     var carregarContatos = function () {
         contatosAPI.getContatos().then(function (response) {
-            response.data.forEach(function(item){
+            /* response.data.forEach(function (item) {
                 item.serial = serialGenerator.generate();
-            })
+            }) */
             $scope.contatos = response.data;
             // console.log(response.data);
         }).catch(function (response) {
@@ -28,7 +28,7 @@ angular.module("listaTelefonica", []).controller("listaTelefonicaCtrl", function
     }
 
     $scope.adicionarContato = function (contato) {
-        
+
         contato.serial = serialGenerator.generate();
         contato.data = new Date();
         contatosAPI.saveContato(contato).then(function (response) {
@@ -42,6 +42,7 @@ angular.module("listaTelefonica", []).controller("listaTelefonicaCtrl", function
         var contato = contatos.filter(function (contato) {
             if (!contato.selecionado)
                 return contato;
+            console.log(contato)
         });
 
         $http.post("http://localhost:8000/del_contatos", contato).then(function (response) {
@@ -50,17 +51,17 @@ angular.module("listaTelefonica", []).controller("listaTelefonicaCtrl", function
         });
     };
 
-    $scope.isContatoSelecionado = function (contatos) {
+    /* $scope.isContatoSelecionado = function (contatos) {
         return [...contatos].some(function (contato) {
             return contato.selecionado;
         });
-    };
+    }; */
 
     $scope.ordenarPor = function (campo) {
         $scope.criterioDeOrdenacao = campo;
         $scope.direcaoDaOrdenacao = !$scope.direcaoDaOrdenacao;
     };
-    $scope.selecionado = "selecionado";
+    // $scope.selecionado = "selecionado";
     carregarContatos();
     carregarOperadoras();
 });

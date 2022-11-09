@@ -10,9 +10,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 var contatos = [
-  { nome: "Bruno", telefone: "9999-2222", data: new Date(), operadora: { nome: "Oi", codigo: 14, categoria: "Celular" } },
-  { nome: "Sandra", telefone: "9999-3333", data: new Date(), operadora: { nome: "Vivo", codigo: 15, categoria: "Celular" } },
-  { nome: "Mariana", telefone: "9999-9999", data: new Date(), operadora: { nome: "Tim", codigo: 41, categoria: "Celular" } }
+  { nome: "Bruno", telefone: "9999-2222", data: new Date(), operadora: { nome: "Oi", codigo: 14, categoria: "Celular",serial: '2I>?QX-/_!' } },
+  { nome: "Sandra", telefone: "9999-3333", data: new Date(), operadora: { nome: "Vivo", codigo: 15, categoria: "Celular",serial: 'NY6EZY;I#2' } },
+  { nome: "Mariana", telefone: "9999-9999", data: new Date(), operadora: { nome: "Tim", codigo: 41, categoria: "Celular",serial: '1=OG([SV9Q' } }
 ];
 
 app.use(express.static(__dirname + '/public'));
@@ -48,8 +48,8 @@ app.post('/del_contatos', function (req, res) {
   // res.send(req.body);
   
   for (i=0;i<contatos.length;i++){
-    if((contatos[i]) == req.body){
-      destroy(contatos[i]); 
+    if((contatos[i]) === req.body){
+      delete (contatos[i]); 
     }
   }
   res.send(req.body);
